@@ -1,0 +1,632 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MAN.DESIGNER Portfolio</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:linear-gradient(135deg,#000000,#001f3f,#000814);
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* SCROLL BAR */
+
+    ::-webkit-scrollbar{
+      width:10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:gold;
+      border-radius:20px;
+    }
+
+    /* HEADER */
+
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      padding:20px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      backdrop-filter:blur(10px);
+      background:rgba(0,0,0,0.3);
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:gold;
+      text-shadow:0 0 10px gold;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:25px;
+      transition:0.4s;
+      position:relative;
+    }
+
+    nav a:hover{
+      color:gold;
+      text-shadow:0 0 10px gold;
+    }
+
+    nav a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-5px;
+      width:0%;
+      height:2px;
+      background:gold;
+      transition:0.4s;
+    }
+
+    nav a:hover::after{
+      width:100%;
+    }
+
+    section{
+      padding:120px 10%;
+      min-height:100vh;
+    }
+
+    /* HERO */
+
+    .hero{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      position:relative;
+    }
+
+    .hero-text{
+      max-width:600px;
+    }
+
+    .hero-text h1{
+      font-size:70px;
+      color:gold;
+      text-shadow:0 0 20px gold;
+    }
+
+    .typing{
+      font-size:28px;
+      margin-top:20px;
+      color:white;
+      height:40px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .typing span{
+      position:absolute;
+      opacity:0;
+      animation:changeText 12s infinite;
+    }
+
+    .typing span:nth-child(1){animation-delay:0s;}
+    .typing span:nth-child(2){animation-delay:3s;}
+    .typing span:nth-child(3){animation-delay:6s;}
+    .typing span:nth-child(4){animation-delay:9s;}
+
+    @keyframes changeText{
+      0%{opacity:0; transform:translateY(20px);}
+      10%{opacity:1; transform:translateY(0);}
+      25%{opacity:1;}
+      35%{opacity:0; transform:translateY(-20px);}
+      100%{opacity:0;}
+    }
+
+    .hero-buttons{
+      margin-top:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 35px;
+      border:2px solid gold;
+      border-radius:40px;
+      color:gold;
+      text-decoration:none;
+      margin-right:15px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .btn:hover{
+      background:gold;
+      color:black;
+      box-shadow:0 0 20px gold;
+      transform:scale(1.05);
+    }
+
+    .hero-image{
+      width:400px;
+      height:400px;
+      border-radius:50%;
+      border:5px solid gold;
+      overflow:hidden;
+      box-shadow:0 0 40px rgba(255,215,0,0.5);
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .hero-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    @keyframes float{
+      0%{transform:translateY(0);}
+      50%{transform:translateY(-20px);}
+      100%{transform:translateY(0);}
+    }
+
+    /* ABOUT */
+
+    .title{
+      font-size:45px;
+      text-align:center;
+      color:gold;
+      margin-bottom:50px;
+      text-shadow:0 0 10px gold;
+    }
+
+    .about-box{
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      padding:40px;
+      border-radius:25px;
+      border:1px solid rgba(255,255,255,0.1);
+      transition:0.4s;
+    }
+
+    .about-box:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 30px rgba(255,215,0,0.3);
+    }
+
+    .about-box h2{
+      color:gold;
+      margin-bottom:20px;
+      font-size:35px;
+    }
+
+    .about-box p{
+      line-height:1.8;
+      color:#ddd;
+    }
+
+    /* SKILLS */
+
+    .skills-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .skill-card{
+      background:rgba(255,255,255,0.05);
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .skill-card:hover{
+      transform:translateY(-10px) scale(1.03);
+      box-shadow:0 0 30px rgba(255,215,0,0.4);
+    }
+
+    .skill-card i{
+      font-size:60px;
+      color:gold;
+      margin-bottom:20px;
+    }
+
+    .skill-card h3{
+      margin-bottom:20px;
+    }
+
+    .progress{
+      background:#222;
+      border-radius:20px;
+      overflow:hidden;
+      height:12px;
+    }
+
+    .progress-bar{
+      height:100%;
+      background:linear-gradient(to right,gold,#00bfff);
+      border-radius:20px;
+      animation:load 2s forwards;
+    }
+
+    @keyframes load{
+      from{width:0;}
+    }
+
+    /* PORTFOLIO */
+
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+    }
+
+    .portfolio-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+    }
+
+    .portfolio-card img{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      transition:0.5s;
+    }
+
+    .portfolio-overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.7);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      opacity:0;
+      transition:0.5s;
+    }
+
+    .portfolio-card:hover img{
+      transform:scale(1.1);
+    }
+
+    .portfolio-card:hover .portfolio-overlay{
+      opacity:1;
+    }
+
+    .portfolio-overlay h3{
+      color:gold;
+      margin-bottom:10px;
+    }
+
+    /* CONTACT */
+
+    .contact form{
+      max-width:700px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .contact input,
+    .contact textarea{
+      padding:15px;
+      border:none;
+      border-radius:15px;
+      background:rgba(255,255,255,0.08);
+      color:white;
+      outline:none;
+    }
+
+    .contact textarea{
+      height:180px;
+      resize:none;
+    }
+
+    .contact button{
+      cursor:pointer;
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:black;
+      color:#aaa;
+    }
+
+    .social{
+      margin-top:25px;
+    }
+
+    .social a{
+      color:gold;
+      font-size:24px;
+      margin-right:20px;
+      transition:0.4s;
+    }
+
+    .social a:hover{
+      transform:translateY(-5px) scale(1.2);
+      text-shadow:0 0 15px gold;
+    }
+
+    /* PARTICLES */
+
+    .particles{
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      overflow:hidden;
+      z-index:-1;
+    }
+
+    .particles span{
+      position:absolute;
+      display:block;
+      width:5px;
+      height:5px;
+      background:gold;
+      border-radius:50%;
+      animation:animate 20s linear infinite;
+      opacity:0.5;
+    }
+
+    @keyframes animate{
+      0%{
+        transform:translateY(100vh) scale(0);
+      }
+      100%{
+        transform:translateY(-10vh) scale(1);
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+      }
+
+      .hero-image{
+        margin-bottom:40px;
+        width:300px;
+        height:300px;
+      }
+
+      .hero-text h1{
+        font-size:50px;
+      }
+
+      nav{
+        display:none;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- PARTICLES -->
+
+  <div class="particles">
+    <span style="left:10%; animation-duration:12s;"></span>
+    <span style="left:20%; animation-duration:18s;"></span>
+    <span style="left:30%; animation-duration:10s;"></span>
+    <span style="left:40%; animation-duration:20s;"></span>
+    <span style="left:50%; animation-duration:15s;"></span>
+    <span style="left:60%; animation-duration:22s;"></span>
+    <span style="left:70%; animation-duration:16s;"></span>
+    <span style="left:80%; animation-duration:25s;"></span>
+    <span style="left:90%; animation-duration:14s;"></span>
+  </div>
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="logo">MAN.DESIGNER</div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+
+      <h1>MAN.DESIGNER</h1>
+
+      <div class="typing">
+        <span>Freelancer Designer</span>
+        <span>Graphic Designer</span>
+        <span>Photographer</span>
+        <span>Digital Artist</span>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#about" class="btn">About Me</a>
+        <a href="#contact" class="btn">Contact</a>
+      </div>
+
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-behance"></i></a>
+        <a href="#"><i class="fab fa-dribbble"></i></a>
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop" alt="">
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h1 class="title">About Me</h1>
+
+    <div class="about-box">
+
+      <h2>Trương Vũ Biển</h2>
+
+      <h3 style="color:white; margin-bottom:20px;">
+        Freelancer Designer and Graphic Designer
+      </h3>
+
+      <p>
+        I'm a Freelancer Designer with a passion for creativity,
+        specializing in modern and sophisticated design while always
+        striving to deliver the best possible experience for my clients.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <h1 class="title">My Skills</h1>
+
+    <div class="skills-container">
+
+      <div class="skill-card">
+        <i class="fa-solid fa-camera"></i>
+        <h3>Photography</h3>
+
+        <div class="progress">
+          <div class="progress-bar" style="width:90%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <i class="fa-solid fa-pen-nib"></i>
+        <h3>Illustrator</h3>
+
+        <div class="progress">
+          <div class="progress-bar" style="width:85%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <i class="fa-solid fa-image"></i>
+        <h3>Photoshop</h3>
+
+        <div class="progress">
+          <div class="progress-bar" style="width:95%;"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PORTFOLIO -->
+
+  <section id="portfolio">
+
+    <h1 class="title">Portfolio</h1>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <div class="portfolio-overlay">
+          <h3>Modern Design</h3>
+          <p>Graphic Design</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <div class="portfolio-overlay">
+          <h3>Creative Artwork</h3>
+          <p>Digital Art</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <div class="portfolio-overlay">
+          <h3>Photography</h3>
+          <p>Creative Shot</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <h1 class="title">Contact Me</h1>
+
+    <form>
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="email" placeholder="Your Email">
+
+      <textarea placeholder="Your Message"></textarea>
+
+      <button class="btn">Send Message</button>
+
+    </form>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 MAN.DESIGNER | Designed By Trương Vũ Biển
+  </footer>
+
+</body>
+</html>
+```
